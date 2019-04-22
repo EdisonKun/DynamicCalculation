@@ -60,7 +60,7 @@ int main (int argc, char* argv[]) {
 
     //read planned joint,velocity and acceleration from the file
     ifstream fin;
-    fin.open("/home/kun/Desktop/d_delete.txt");    
+    fin.open("/home/kun/catkin_ws/src/single_leg_test/DataFloder/PlannedData.txt");
     if (!fin.is_open())
     {
         cout << "could not open the d_delete file" << endl;
@@ -163,6 +163,7 @@ int main (int argc, char* argv[]) {
 
     }
     fout_acc.close();
+    cout << "finish the calculation" << endl;
     delete model;
     return 0;
 }

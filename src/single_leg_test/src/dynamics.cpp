@@ -163,11 +163,10 @@ int main (int argc, char* argv[]) {
         fout_acc << VQ_1(0) << "\t" << VQ_1(1) << "\t" << VQ_1(2) << "\t" <<
                     VQd_1(0) << "\t" << VQd_1(1) << "\t" << VQd_1(2) << "\t" <<
                     VQdd_1(0) << "\t" << VQdd_1(1) << "\t" << VQdd_1(2) << "\t" <<
-                    VTau_1(0) << "\t" << VTau_1(1) << "\t" <<VTau_1(2) << endl;
-
-        cout << i <<endl;
+                    VTau_1(0) << "\t" << VTau_1(1) << "\t" <<VTau_1(2) << endl;        
 
     }
+    cout << "finish the inverse dynamics calculation" <<endl;
     fout_acc.close();
     delete model;
     return 0;

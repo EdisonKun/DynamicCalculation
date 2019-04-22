@@ -11,9 +11,9 @@ int main(int argc, char *argv[])
     rbdl_check_api_version(RBDL_API_VERSION);
 
     MyRobotSolver solver_test;
-    solver_test.model_initialization();
+ //   solver_test.model_initialization();
     solver_test.GetLengthofPlannedData();
     solver_test.IDynamicsCalculation();
-//    solver_test.FDynamicsCalculation();
+    solver_test.FDynamicsCalculation();
     return 0;
 }

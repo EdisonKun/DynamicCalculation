@@ -24,8 +24,8 @@ public:
     const MatrixNd& getTau();
     const MatrixNd& getQPlanned();
     const MatrixNd& getQDotPlanned();
-//    void FDynamicsCalculation();//Calculate the forward dynamic with PD controller
-//    void FileStoreIntoTextFile(const char *filestoredlocation, const MatrixNd & Stored_data);
+    void FDynamicsCalculation();//Calculate the forward dynamic with PD controller
+    void FileStoreIntoTextFile(const char *filestoredlocation, const MatrixNd & Stored_data);
 
 
 private:

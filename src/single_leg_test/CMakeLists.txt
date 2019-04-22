@@ -141,6 +141,7 @@ include_directories(
  add_executable(testa test/test.cpp)
  add_executable(dynamics src/dynamics.cpp)
  add_executable(model_test test/model_test.cpp)
+ add_executable(example test/example.cc)
 
 # add_executable(Request_1 src/Request_1.cpp)
 # add_executable(example test/example.cc)
@@ -175,6 +176,13 @@ target_link_libraries(dynamics
 
 
 target_link_libraries(model_test
+  ${catkin_LIBRARIES}
+  single_leg_test
+  ${RBDL_LIBRARY}
+  ${PROJECT_NAME}
+)
+
+target_link_libraries(example
   ${catkin_LIBRARIES}
   single_leg_test
   ${RBDL_LIBRARY}

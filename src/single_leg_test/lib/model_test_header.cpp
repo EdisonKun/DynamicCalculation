@@ -2,7 +2,7 @@
 #include "assert.h"
 
 MyRobotSolver::MyRobotSolver()
-  : length_of_data(1),Time_derta(0.001)
+  : length_of_data(10001),Time_derta(0.001)
 {
 
   QPlanned.resize(length_of_data,3);
@@ -49,26 +49,26 @@ const MatrixNd& MyRobotSolver::getQPlanned()
   return QPlanned;
 }
 
-//void MyRobotSolver::FileStoreIntoTextFile(const char* filestoredlocation, const MatrixNd& Stored_data)
-//{
-//  ofstream fout;
-//  fout.open(filestoredlocation);
-//  if (!fout.is_open())
-//  {
-//      cout << "could not open the data_generate.txt file" << endl;
-//      cout << "Program terminating" << endl;
-//      exit(EXIT_FAILURE);
-//  }
-//  for (int i = 0; i < length_of_data; ++i) {
-//    fout << Stored_data(i,0) << "\t" << Stored_data(i,1) << "\t" << Stored_data(i,2) << endl;
-//  }
-//  fout.close();
-//  cout << "Finish the" << filestoredlocation <<" Data stored" << endl;
-//}
+void MyRobotSolver::FileStoreIntoTextFile(const char* filestoredlocation, const MatrixNd& Stored_data)
+{
+  ofstream fout;
+  fout.open(filestoredlocation);
+  if (!fout.is_open())
+  {
+      cout << "could not open the data_generate.txt file" << endl;
+      cout << "Program terminating" << endl;
+      exit(EXIT_FAILURE);
+  }
+  for (int i = 0; i < length_of_data; ++i) {
+    fout << Stored_data(i,0) << "\t" << Stored_data(i,1) << "\t" << Stored_data(i,2) << endl;
+  }
+  fout.close();
+  cout << "Finish the" << filestoredlocation <<" Data stored" << endl;
+}
 
 void MyRobotSolver::model_initialization()
 {
-    //rbdl_check_api_version (RBDL_API_VERSION);
+    rbdl_check_api_version (RBDL_API_VERSION);
 
     unsigned int body_a_id, body_b_id, body_c_id;
     Body body_a, body_b, body_c;
@@ -101,6 +101,7 @@ void MyRobotSolver::model_initialization()
     );
 
     body_c_id = QuadrupedRobotModel.AddBody(body_b_id, Xtrans(Vector3d(0.25, 0., 0.1)), joint_c, body_c);
+    cout << " the DOF is " << QuadrupedRobotModel.dof_count << endl;
     cout << "Finish the model construction" << endl;
 }
 
@@ -132,75 +133,78 @@ void MyRobotSolver::GetLengthofPlannedData()
 
 bool MyRobotSolver::IDynamicsCalculation()
 {
-    VectorNd VecQ, VecQDot, VecQDDot;
-    VectorNd VecTau;
-//    VectorNd VecTau;
-    VecTau.resize(3);
-    VecQ.resize(3);
-    VecTau = Vector3d::Zero(3);
-//    cout << Vector3d::Zero(3) << endl;
-    VecQDot.resize(3);
-    VecQDDot.resize(3);
+  VectorNd VecQ = VectorNd::Zero (QuadrupedRobotModel.dof_count);
+  cout << "the dof is " << QuadrupedRobotModel.dof_count << endl;
+  VectorNd VecQDot = VectorNd::Zero (QuadrupedRobotModel.dof_count);
+  VectorNd VecTau = VectorNd::Zero (QuadrupedRobotModel.dof_count);
+  VectorNd VecQDDot = VectorNd::Zero (QuadrupedRobotModel.dof_count);
+//  cout << "what?" << endl;
+//  cout << VecQ.transpose() << endl;
+//  InverseDynamics(QuadrupedRobotModel,VecQ,VecQDot,VecQDDot,VecTau);
     for (unsigned int i = 0; i < length_of_data; i++)
     {
         VecQ = QPlanned.row(i).transpose();
+//        cout << VecQ.transpose() << endl;
         VecQDot = QDotPlanned.row(i).transpose();
         VecQDDot = QDDotPlanned.row(i).transpose();
+//        cout << VecQDDot.transpose() << endl;
         InverseDynamics(QuadrupedRobotModel,VecQ,VecQDot,VecQDDot,VecTau);
+//        cout << "VecTau is equal to:" << VecTau.transpose() << endl;
         TauofIDynamics.row(i).transpose() = VecTau;
+//        cout << "i is equal to " << i << endl;
     }
     cout <<"finish the Inverse Dynamics calculation" << endl;
     return true;
 }
 
-//void MyRobotSolver::FDynamicsCalculation()
-//{
-//  QAcutal.row(0) = QPlanned.row(0);
-//  QDotAcutal.row(0) = QDotPlanned.row(0);
-//  QDDotAcutal.row(0) = QDDotPlanned.row(0);
-////  cout << QAcutal.row(0) << endl << QDotAcutal.row(0) << endl << QDDotAcutal.row(0) << endl;
+void MyRobotSolver::FDynamicsCalculation()
+{
+  QAcutal.row(0) = QPlanned.row(0);
+  QDotAcutal.row(0) = QDotPlanned.row(0);
+  QDDotAcutal.row(0) = QDDotPlanned.row(0);
+//  cout << QAcutal.row(0) << endl << QDotAcutal.row(0) << endl << QDDotAcutal.row(0) << endl;
 
-//  double kp = 2;
-//  double kd = 2;
-//  for (int i = 0; i < length_of_data - 1 ; ++i) {
-//    // get the i-th row planned data;
-//    VecQAct = QAcutal.row(i).transpose();
-//    VecQDotAct = QDotAcutal.row(i).transpose();
+  double kp = 2;
+  double kd = 2;
+  for (int i = 0; i < length_of_data - 1 ; ++i) {
+    // get the i-th row planned data;
+    VecQAct = QAcutal.row(i).transpose();
+    VecQDotAct = QDotAcutal.row(i).transpose();
 
-//    // get the Tau of the ID and tau error with PD controller;
-//    VecTauAct = TauofIDynamics.row(i).transpose() + VecTauerror;
+    // get the Tau of the ID and tau error with PD controller;
+    VecTauAct = TauofIDynamics.row(i).transpose() + VecTauerror;
 
-//    // calculate the acceleration
-//   // ForwardDynamics(QuadrupedRobotModel,VecQAct,VecQDotAct,VecTauAct,VecQDDotAct);
+    // calculate the acceleration
+   // ForwardDynamics(QuadrupedRobotModel,VecQAct,VecQDotAct,VecTauAct,VecQDDotAct);
 
-//    // stored the acc
-//    QDDotAcutal.row(i) = VecQDDotAct.transpose();
+    // stored the acc
+    QDDotAcutal.row(i) = VecQDDotAct.transpose();
 
-//    // iteration to calculate the actual velocity and position
-//    QDotAcutal.row(i+1) = QDotAcutal.row(i) + QDDotAcutal.row(i) * Time_derta;
-//    QAcutal.row(i+1) = QAcutal.row(i) + QDotAcutal.row(i) * Time_derta;
+    // iteration to calculate the actual velocity and position
+    QDotAcutal.row(i+1) = QDotAcutal.row(i) + QDDotAcutal.row(i) * Time_derta;
+    QAcutal.row(i+1) = QAcutal.row(i) + QDotAcutal.row(i) * Time_derta;
 
-//    // Calculate the error of Q and QDot
-//    VecQerror.transpose() = QPlanned.row(i+1) - QAcutal.row(i+1) ;
-//    VecQDoterror.transpose() = QDotPlanned.row(i+1) - QDotAcutal.row(i+1);
+    // Calculate the error of Q and QDot
+    VecQerror.transpose() = QPlanned.row(i+1) - QAcutal.row(i+1) ;
+    VecQDoterror.transpose() = QDotPlanned.row(i+1) - QDotAcutal.row(i+1);
 
-//    // Calculate the torque error with PD controller
-//    VecTauerror = kp * VecQerror + kd * VecQDoterror;
-//  }
-//   // Stored the actual Q;
-//  cout << "finish the forward dynamics calculation" << endl;
+    // Calculate the torque error with PD controller
+    VecTauerror = kp * VecQerror + kd * VecQDoterror;
+  }
+   // Stored the actual Q;
+  cout << "finish the forward dynamics calculation" << endl;
 
-////  const char *filestoredlocation = "/home/kun/catkin_ws/src/single_leg_test/DataFloder/PositionofForward.txt";
-////  FileStoreIntoTextFile(filestoredlocation, QAcutal);
+  const char *filestoredlocation = "/home/kun/catkin_ws/src/single_leg_test/DataFloder/PositionofForward.txt";
+  FileStoreIntoTextFile(filestoredlocation, QAcutal);
 
-////  // Stored the actual QDot;
-////  filestoredlocation = "/home/kun/catkin_ws/src/single_leg_test/DataFloder/VelocityofForward.txt";
-////  FileStoreIntoTextFile(filestoredlocation, QDotAcutal);
+  // Stored the actual QDot;
+  filestoredlocation = "/home/kun/catkin_ws/src/single_leg_test/DataFloder/VelocityofForward.txt";
+  FileStoreIntoTextFile(filestoredlocation, QDotAcutal);
 
-////  // Stored the actual Acceleration
-////  filestoredlocation = "/home/kun/catkin_ws/src/single_leg_test/DataFloder/AccelerationofForward.txt";
-////  FileStoreIntoTextFile(filestoredlocation, QDDotAcutal);
+  // Stored the actual Acceleration
+  filestoredlocation = "/home/kun/catkin_ws/src/single_leg_test/DataFloder/AccelerationofForward.txt";
+  FileStoreIntoTextFile(filestoredlocation, QDDotAcutal);
 
-//}
+}
 
 

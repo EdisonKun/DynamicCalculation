@@ -17,6 +17,70 @@
             <DistClean command="/usr/bin/make -f &quot;/home/kun/catkin_ws/debug/single_leg_test/Makefile&quot;  VERBOSE=1 clean" />
          </MakeCommands>
       </Target>
+      <Target title="example">
+         <Option output="/home/kun/catkin_ws/debug/devel/lib/single_leg_test/example" prefix_auto="0" extension_auto="0" />
+         <Option working_dir="/home/kun/catkin_ws/debug/devel/lib/single_leg_test" />
+         <Option object_output="./" />
+         <Option type="1" />
+         <Option compiler="gcc" />
+         <Compiler>
+            <Add option="-DROS_BUILD_SHARED_LIBS=1" />
+            <Add option="-DROS_PACKAGE_NAME=&quot;single_leg_test&quot;" />
+            <Add option="-DROSCONSOLE_BACKEND_LOG4CXX" />
+            <Add directory="/home/kun/catkin_ws/src/single_leg_test" />
+            <Add directory="/home/kun/catkin_ws/src/single_leg_test/include" />
+            <Add directory="/opt/ros/kinetic/include" />
+            <Add directory="/opt/ros/kinetic/share/xmlrpcpp/cmake/../../../include/xmlrpcpp" />
+            <Add directory="/usr/include" />
+            <Add directory="/usr/include/c++/5" />
+            <Add directory="/usr/include/c++/5/backward" />
+            <Add directory="/usr/include/eigen3" />
+            <Add directory="/usr/include/x86_64-linux-gnu" />
+            <Add directory="/usr/include/x86_64-linux-gnu/c++/5" />
+            <Add directory="/usr/lib/gcc/x86_64-linux-gnu/5/include" />
+            <Add directory="/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed" />
+            <Add directory="/usr/local/include" />
+            <Add directory="/usr/local/webots/include" />
+         </Compiler>
+         <MakeCommands>
+            <Build command="/usr/bin/make -f &quot;/home/kun/catkin_ws/debug/single_leg_test/Makefile&quot;  VERBOSE=1 example" />
+            <CompileFile command="/usr/bin/make -f &quot;/home/kun/catkin_ws/debug/single_leg_test/Makefile&quot;  VERBOSE=1 &quot;$file&quot;" />
+            <Clean command="/usr/bin/make -f &quot;/home/kun/catkin_ws/debug/single_leg_test/Makefile&quot;  VERBOSE=1 clean" />
+            <DistClean command="/usr/bin/make -f &quot;/home/kun/catkin_ws/debug/single_leg_test/Makefile&quot;  VERBOSE=1 clean" />
+         </MakeCommands>
+      </Target>
+      <Target title="example/fast">
+         <Option output="/home/kun/catkin_ws/debug/devel/lib/single_leg_test/example" prefix_auto="0" extension_auto="0" />
+         <Option working_dir="/home/kun/catkin_ws/debug/devel/lib/single_leg_test" />
+         <Option object_output="./" />
+         <Option type="1" />
+         <Option compiler="gcc" />
+         <Compiler>
+            <Add option="-DROS_BUILD_SHARED_LIBS=1" />
+            <Add option="-DROS_PACKAGE_NAME=&quot;single_leg_test&quot;" />
+            <Add option="-DROSCONSOLE_BACKEND_LOG4CXX" />
+            <Add directory="/home/kun/catkin_ws/src/single_leg_test" />
+            <Add directory="/home/kun/catkin_ws/src/single_leg_test/include" />
+            <Add directory="/opt/ros/kinetic/include" />
+            <Add directory="/opt/ros/kinetic/share/xmlrpcpp/cmake/../../../include/xmlrpcpp" />
+            <Add directory="/usr/include" />
+            <Add directory="/usr/include/c++/5" />
+            <Add directory="/usr/include/c++/5/backward" />
+            <Add directory="/usr/include/eigen3" />
+            <Add directory="/usr/include/x86_64-linux-gnu" />
+            <Add directory="/usr/include/x86_64-linux-gnu/c++/5" />
+            <Add directory="/usr/lib/gcc/x86_64-linux-gnu/5/include" />
+            <Add directory="/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed" />
+            <Add directory="/usr/local/include" />
+            <Add directory="/usr/local/webots/include" />
+         </Compiler>
+         <MakeCommands>
+            <Build command="/usr/bin/make -f &quot;/home/kun/catkin_ws/debug/single_leg_test/Makefile&quot;  VERBOSE=1 example/fast" />
+            <CompileFile command="/usr/bin/make -f &quot;/home/kun/catkin_ws/debug/single_leg_test/Makefile&quot;  VERBOSE=1 &quot;$file&quot;" />
+            <Clean command="/usr/bin/make -f &quot;/home/kun/catkin_ws/debug/single_leg_test/Makefile&quot;  VERBOSE=1 clean" />
+            <DistClean command="/usr/bin/make -f &quot;/home/kun/catkin_ws/debug/single_leg_test/Makefile&quot;  VERBOSE=1 clean" />
+         </MakeCommands>
+      </Target>
       <Target title="dynamics">
          <Option output="/home/kun/catkin_ws/debug/devel/lib/single_leg_test/dynamics" prefix_auto="0" extension_auto="0" />
          <Option working_dir="/home/kun/catkin_ws/debug/devel/lib/single_leg_test" />
@@ -579,6 +643,9 @@
       </Unit>
       <Unit filename="/home/kun/catkin_ws/src/single_leg_test/src/dynamics.cpp">
          <Option target="dynamics"/>
+      </Unit>
+      <Unit filename="/home/kun/catkin_ws/src/single_leg_test/test/example.cc">
+         <Option target="example"/>
       </Unit>
       <Unit filename="/home/kun/catkin_ws/src/single_leg_test/test/model_test.cpp">
          <Option target="model_test"/>
