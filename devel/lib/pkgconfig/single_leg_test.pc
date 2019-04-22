@@ -1,0 +1,8 @@
+prefix=/home/kun/catkin_ws/devel
+
+Name: single_leg_test
+Description: Description of single_leg_test
+Version: 0.0.0
+Cflags: -I/home/kun/catkin_ws/src/single_leg_test/include
+Libs: -L/home/kun/catkin_ws/devel/lib -lsingle_leg_test
+Requires: 

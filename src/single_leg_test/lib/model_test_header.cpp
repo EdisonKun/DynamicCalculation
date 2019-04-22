@@ -147,7 +147,7 @@ bool MyRobotSolver::IDynamicsCalculation()
         VecQDot = QDotPlanned.row(i).transpose();
         VecQDDot = QDDotPlanned.row(i).transpose();
         InverseDynamics(QuadrupedRobotModel,VecQ,VecQDot,VecQDDot,VecTau);
-        TauofIDynamics.row(i) = VecTau.transpose();
+        TauofIDynamics.row(i).transpose() = VecTau;
     }
     cout <<"finish the Inverse Dynamics calculation" << endl;
     return true;

@@ -1,0 +1,8 @@
+prefix=/home/kun/catkin_ws/debug/devel
+
+Name: webots_simulation
+Description: Description of webots_simulation
+Version: 0.0.0
+Cflags: 
+Libs: -L/home/kun/catkin_ws/debug/devel/lib 
+Requires: 

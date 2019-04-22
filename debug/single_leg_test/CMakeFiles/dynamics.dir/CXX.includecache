@@ -1,0 +1,18 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/kun/catkin_ws/src/single_leg_test/src/dynamics.cpp
+iostream
+-
+rbdl/rbdl.h
+-
+fstream
+-
+math.h
+-
+

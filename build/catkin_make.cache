@@ -1,0 +1,2 @@
+single_leg_test:webots_simulation
+-DCATKIN_DEVEL_PREFIX=/home/kun/catkin_ws/devel -DCMAKE_INSTALL_PREFIX=/home/kun/catkin_ws/install -G Unix Makefiles

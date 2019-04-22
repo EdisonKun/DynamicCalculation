@@ -1,0 +1,16 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/kun/catkin_ws/src/single_leg_test/test/test.cpp
+iostream
+-
+rbdl/rbdl.h
+-
+fstream
+-
+
