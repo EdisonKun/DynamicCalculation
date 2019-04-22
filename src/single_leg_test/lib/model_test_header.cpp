@@ -134,10 +134,15 @@ void MyRobotSolver::GetLengthofPlannedData()
 bool MyRobotSolver::IDynamicsCalculation()
 {
   VectorNd VecQ = VectorNd::Zero (QuadrupedRobotModel.dof_count);
-  cout << "the dof is " << QuadrupedRobotModel.dof_count << endl;
   VectorNd VecQDot = VectorNd::Zero (QuadrupedRobotModel.dof_count);
   VectorNd VecTau = VectorNd::Zero (QuadrupedRobotModel.dof_count);
   VectorNd VecQDDot = VectorNd::Zero (QuadrupedRobotModel.dof_count);
+//  VectorNd VecQ,VecQDot, VecQDDot;
+//  VectorNd VecTau;
+//  VecQ.resize(3);
+//  VecQDot.resize(3);
+//  VecQDDot.resize(3);
+//  VecTau = Vector3dZero;//it's also right!
 //  cout << "what?" << endl;
 //  cout << VecQ.transpose() << endl;
 //  InverseDynamics(QuadrupedRobotModel,VecQ,VecQDot,VecQDDot,VecTau);
