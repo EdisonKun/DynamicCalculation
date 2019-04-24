@@ -23,16 +23,16 @@ public:
     const Model& getModel();
     const MatrixNd& getTau();
     const MatrixNd& getQPlanned();
+//    const MatrixNd& getQDotPlanned();
     const MatrixNd& getQDotPlanned();
     const unsigned int& getlength_of_data();
     void FDynamicsCalculation();//Calculate the forward dynamic with PD controller
     void FileStoreIntoTextFile(const char *filestoredlocation, const MatrixNd & Stored_data);
 
-
-private:
-    unsigned int length_of_data;
+protected:
     MatrixNd QPlanned, QDotPlanned, QDDotPlanned;
-    MatrixNd TauofIDynamics;    
+    MatrixNd TauofIDynamics;
+    unsigned int length_of_data;
     MatrixNd QAcutal, QDotAcutal, QDDotAcutal;
     Model QuadrupedRobotModel;
     double Time_derta;

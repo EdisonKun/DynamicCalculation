@@ -23,6 +23,4 @@ eigen3/Eigen/Core
 /home/kun/catkin_ws/src/single_leg_test/lib/model_test_header.cpp
 /home/kun/catkin_ws/src/single_leg_test/include/single_leg_test/model_test_header.hpp
 -
-assert.h
-/home/kun/catkin_ws/src/single_leg_test/lib/assert.h
 

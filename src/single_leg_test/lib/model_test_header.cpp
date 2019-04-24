@@ -1,5 +1,5 @@
 #include "/home/kun/catkin_ws/src/single_leg_test/include/single_leg_test/model_test_header.hpp"
-#include "assert.h"
+//#include "assert.h"
 
 MyRobotSolver::MyRobotSolver()
   : length_of_data(10001),Time_derta(0.001)
@@ -20,7 +20,6 @@ MyRobotSolver::MyRobotSolver()
   VecQAct.resize(3);
   VecQDotAct.resize(3);
   VecQDDotAct.resize(3);
-  model_initialization();
 }
 
 MyRobotSolver::~MyRobotSolver()
