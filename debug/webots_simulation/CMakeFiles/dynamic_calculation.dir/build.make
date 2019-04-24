@@ -57,70 +57,7 @@ include webots_simulation/CMakeFiles/dynamic_calculation.dir/progress.make
 # Include the compile flags for this target's objects.
 include webots_simulation/CMakeFiles/dynamic_calculation.dir/flags.make
 
-webots_simulation/CMakeFiles/dynamic_calculation.dir/home/kun/Webots/model_build/controllers/single_leg_dynamics/dynamic_calculation.cpp.o: webots_simulation/CMakeFiles/dynamic_calculation.dir/flags.make
-webots_simulation/CMakeFiles/dynamic_calculation.dir/home/kun/Webots/model_build/controllers/single_leg_dynamics/dynamic_calculation.cpp.o: /home/kun/Webots/model_build/controllers/single_leg_dynamics/dynamic_calculation.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/kun/catkin_ws/debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object webots_simulation/CMakeFiles/dynamic_calculation.dir/home/kun/Webots/model_build/controllers/single_leg_dynamics/dynamic_calculation.cpp.o"
-	cd /home/kun/catkin_ws/debug/webots_simulation && /usr/bin/g++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/dynamic_calculation.dir/home/kun/Webots/model_build/controllers/single_leg_dynamics/dynamic_calculation.cpp.o -c /home/kun/Webots/model_build/controllers/single_leg_dynamics/dynamic_calculation.cpp
-
-webots_simulation/CMakeFiles/dynamic_calculation.dir/home/kun/Webots/model_build/controllers/single_leg_dynamics/dynamic_calculation.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/dynamic_calculation.dir/home/kun/Webots/model_build/controllers/single_leg_dynamics/dynamic_calculation.cpp.i"
-	cd /home/kun/catkin_ws/debug/webots_simulation && /usr/bin/g++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/kun/Webots/model_build/controllers/single_leg_dynamics/dynamic_calculation.cpp > CMakeFiles/dynamic_calculation.dir/home/kun/Webots/model_build/controllers/single_leg_dynamics/dynamic_calculation.cpp.i
-
-webots_simulation/CMakeFiles/dynamic_calculation.dir/home/kun/Webots/model_build/controllers/single_leg_dynamics/dynamic_calculation.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/dynamic_calculation.dir/home/kun/Webots/model_build/controllers/single_leg_dynamics/dynamic_calculation.cpp.s"
-	cd /home/kun/catkin_ws/debug/webots_simulation && /usr/bin/g++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/kun/Webots/model_build/controllers/single_leg_dynamics/dynamic_calculation.cpp -o CMakeFiles/dynamic_calculation.dir/home/kun/Webots/model_build/controllers/single_leg_dynamics/dynamic_calculation.cpp.s
-
-webots_simulation/CMakeFiles/dynamic_calculation.dir/home/kun/Webots/model_build/controllers/single_leg_dynamics/dynamic_calculation.cpp.o.requires:
-
-.PHONY : webots_simulation/CMakeFiles/dynamic_calculation.dir/home/kun/Webots/model_build/controllers/single_leg_dynamics/dynamic_calculation.cpp.o.requires
-
-webots_simulation/CMakeFiles/dynamic_calculation.dir/home/kun/Webots/model_build/controllers/single_leg_dynamics/dynamic_calculation.cpp.o.provides: webots_simulation/CMakeFiles/dynamic_calculation.dir/home/kun/Webots/model_build/controllers/single_leg_dynamics/dynamic_calculation.cpp.o.requires
-	$(MAKE) -f webots_simulation/CMakeFiles/dynamic_calculation.dir/build.make webots_simulation/CMakeFiles/dynamic_calculation.dir/home/kun/Webots/model_build/controllers/single_leg_dynamics/dynamic_calculation.cpp.o.provides.build
-.PHONY : webots_simulation/CMakeFiles/dynamic_calculation.dir/home/kun/Webots/model_build/controllers/single_leg_dynamics/dynamic_calculation.cpp.o.provides
-
-webots_simulation/CMakeFiles/dynamic_calculation.dir/home/kun/Webots/model_build/controllers/single_leg_dynamics/dynamic_calculation.cpp.o.provides.build: webots_simulation/CMakeFiles/dynamic_calculation.dir/home/kun/Webots/model_build/controllers/single_leg_dynamics/dynamic_calculation.cpp.o
-
-
-# Object files for target dynamic_calculation
-dynamic_calculation_OBJECTS = \
-"CMakeFiles/dynamic_calculation.dir/home/kun/Webots/model_build/controllers/single_leg_dynamics/dynamic_calculation.cpp.o"
-
-# External object files for target dynamic_calculation
-dynamic_calculation_EXTERNAL_OBJECTS =
-
-devel/lib/webots_simulation/dynamic_calculation: webots_simulation/CMakeFiles/dynamic_calculation.dir/home/kun/Webots/model_build/controllers/single_leg_dynamics/dynamic_calculation.cpp.o
-devel/lib/webots_simulation/dynamic_calculation: webots_simulation/CMakeFiles/dynamic_calculation.dir/build.make
-devel/lib/webots_simulation/dynamic_calculation: /opt/ros/kinetic/lib/libroscpp.so
-devel/lib/webots_simulation/dynamic_calculation: /usr/lib/x86_64-linux-gnu/libboost_filesystem.so
-devel/lib/webots_simulation/dynamic_calculation: /usr/lib/x86_64-linux-gnu/libboost_signals.so
-devel/lib/webots_simulation/dynamic_calculation: /opt/ros/kinetic/lib/librosconsole.so
-devel/lib/webots_simulation/dynamic_calculation: /opt/ros/kinetic/lib/librosconsole_log4cxx.so
-devel/lib/webots_simulation/dynamic_calculation: /opt/ros/kinetic/lib/librosconsole_backend_interface.so
-devel/lib/webots_simulation/dynamic_calculation: /usr/lib/x86_64-linux-gnu/liblog4cxx.so
-devel/lib/webots_simulation/dynamic_calculation: /usr/lib/x86_64-linux-gnu/libboost_regex.so
-devel/lib/webots_simulation/dynamic_calculation: /opt/ros/kinetic/lib/libxmlrpcpp.so
-devel/lib/webots_simulation/dynamic_calculation: /opt/ros/kinetic/lib/libroscpp_serialization.so
-devel/lib/webots_simulation/dynamic_calculation: /opt/ros/kinetic/lib/librostime.so
-devel/lib/webots_simulation/dynamic_calculation: /opt/ros/kinetic/lib/libcpp_common.so
-devel/lib/webots_simulation/dynamic_calculation: /usr/lib/x86_64-linux-gnu/libboost_system.so
-devel/lib/webots_simulation/dynamic_calculation: /usr/lib/x86_64-linux-gnu/libboost_thread.so
-devel/lib/webots_simulation/dynamic_calculation: /usr/lib/x86_64-linux-gnu/libboost_chrono.so
-devel/lib/webots_simulation/dynamic_calculation: /usr/lib/x86_64-linux-gnu/libboost_date_time.so
-devel/lib/webots_simulation/dynamic_calculation: /usr/lib/x86_64-linux-gnu/libboost_atomic.so
-devel/lib/webots_simulation/dynamic_calculation: /usr/lib/x86_64-linux-gnu/libpthread.so
-devel/lib/webots_simulation/dynamic_calculation: /usr/lib/x86_64-linux-gnu/libconsole_bridge.so
-devel/lib/webots_simulation/dynamic_calculation: devel/lib/libsingle_leg_test.so
-devel/lib/webots_simulation/dynamic_calculation: /usr/local/lib/librbdl.so
-devel/lib/webots_simulation/dynamic_calculation: webots_simulation/CMakeFiles/dynamic_calculation.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/kun/catkin_ws/debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable ../devel/lib/webots_simulation/dynamic_calculation"
-	cd /home/kun/catkin_ws/debug/webots_simulation && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/dynamic_calculation.dir/link.txt --verbose=$(VERBOSE)
-
-# Rule to build all files generated by this target.
-webots_simulation/CMakeFiles/dynamic_calculation.dir/build: devel/lib/webots_simulation/dynamic_calculation
-
-.PHONY : webots_simulation/CMakeFiles/dynamic_calculation.dir/build
-
-webots_simulation/CMakeFiles/dynamic_calculation.dir/requires: webots_simulation/CMakeFiles/dynamic_calculation.dir/home/kun/Webots/model_build/controllers/single_leg_dynamics/dynamic_calculation.cpp.o.requires
+webots_simulation/CMakeFiles/dynamic_calculation.dir/requires:
 
 .PHONY : webots_simulation/CMakeFiles/dynamic_calculation.dir/requires
 

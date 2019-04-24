@@ -139,7 +139,7 @@ include_directories(
 ## The recommended prefix ensures that target names across packages don't collide
 # add_executable(${PROJECT_NAME}_node src/single_leg_test_node.cpp)
  add_executable(single_leg_dynamics /home/kun/Webots/model_build/controllers/single_leg_dynamics/single_leg_dynamics.cpp)
- add_executable(dynamic_calculation /home/kun/Webots/model_build/controllers/single_leg_dynamics/dynamic_calculation.cpp)
+# add_executable(dynamic_calculation /home/kun/Webots/model_build/controllers/single_leg_dynamics/dynamic_calculation.cpp)
 
 # add_executable(Request_1 src/Request_1.cpp)
 # add_executable(example test/example.cc)
@@ -169,11 +169,11 @@ target_link_libraries(single_leg_dynamics
   /usr/local/webots/lib/libCppController.so
 )
 
-target_link_libraries(dynamic_calculation
-  ${catkin_LIBRARIES}
-#  single_leg_dynamics
-  ${RBDL_LIBRARY}
-)
+#target_link_libraries(dynamic_calculation
+#  ${catkin_LIBRARIES}
+##  single_leg_dynamics
+#  ${RBDL_LIBRARY}
+#)
 
 #target_link_libraries(Request_1
 #  ${catkin_LIBRARIES}

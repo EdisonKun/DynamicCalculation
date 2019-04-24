@@ -78,28 +78,6 @@ install/fast: preinstall/fast
 	/usr/bin/cmake -P cmake_install.cmake
 .PHONY : install/fast
 
-# Special rule for the target edit_cache
-edit_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
-	/usr/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
-.PHONY : edit_cache
-
-# Special rule for the target edit_cache
-edit_cache/fast: edit_cache
-
-.PHONY : edit_cache/fast
-
-# Special rule for the target test
-test:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running tests..."
-	/usr/bin/ctest --force-new-ctest-process $(ARGS)
-.PHONY : test
-
-# Special rule for the target test
-test/fast: test
-
-.PHONY : test/fast
-
 # Special rule for the target rebuild_cache
 rebuild_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
@@ -110,6 +88,17 @@ rebuild_cache:
 rebuild_cache/fast: rebuild_cache
 
 .PHONY : rebuild_cache/fast
+
+# Special rule for the target edit_cache
+edit_cache:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
+	/usr/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+.PHONY : edit_cache
+
+# Special rule for the target edit_cache
+edit_cache/fast: edit_cache
+
+.PHONY : edit_cache/fast
 
 # Special rule for the target install/local
 install/local: preinstall
@@ -132,6 +121,17 @@ install/strip: preinstall
 install/strip/fast: install/strip
 
 .PHONY : install/strip/fast
+
+# Special rule for the target test
+test:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running tests..."
+	/usr/bin/ctest --force-new-ctest-process $(ARGS)
+.PHONY : test
+
+# Special rule for the target test
+test/fast: test
+
+.PHONY : test/fast
 
 # The main all target
 all: cmake_check_build_system
@@ -180,48 +180,6 @@ single_leg_dynamics/fast:
 	cd /home/kun/catkin_ws/build && $(MAKE) -f webots_simulation/CMakeFiles/single_leg_dynamics.dir/build.make webots_simulation/CMakeFiles/single_leg_dynamics.dir/build
 .PHONY : single_leg_dynamics/fast
 
-# Convenience name for target.
-webots_simulation/CMakeFiles/dynamic_calculation.dir/rule:
-	cd /home/kun/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 webots_simulation/CMakeFiles/dynamic_calculation.dir/rule
-.PHONY : webots_simulation/CMakeFiles/dynamic_calculation.dir/rule
-
-# Convenience name for target.
-dynamic_calculation: webots_simulation/CMakeFiles/dynamic_calculation.dir/rule
-
-.PHONY : dynamic_calculation
-
-# fast build rule for target.
-dynamic_calculation/fast:
-	cd /home/kun/catkin_ws/build && $(MAKE) -f webots_simulation/CMakeFiles/dynamic_calculation.dir/build.make webots_simulation/CMakeFiles/dynamic_calculation.dir/build
-.PHONY : dynamic_calculation/fast
-
-home/kun/Webots/model_build/controllers/single_leg_dynamics/dynamic_calculation.o: home/kun/Webots/model_build/controllers/single_leg_dynamics/dynamic_calculation.cpp.o
-
-.PHONY : home/kun/Webots/model_build/controllers/single_leg_dynamics/dynamic_calculation.o
-
-# target to build an object file
-home/kun/Webots/model_build/controllers/single_leg_dynamics/dynamic_calculation.cpp.o:
-	cd /home/kun/catkin_ws/build && $(MAKE) -f webots_simulation/CMakeFiles/dynamic_calculation.dir/build.make webots_simulation/CMakeFiles/dynamic_calculation.dir/home/kun/Webots/model_build/controllers/single_leg_dynamics/dynamic_calculation.cpp.o
-.PHONY : home/kun/Webots/model_build/controllers/single_leg_dynamics/dynamic_calculation.cpp.o
-
-home/kun/Webots/model_build/controllers/single_leg_dynamics/dynamic_calculation.i: home/kun/Webots/model_build/controllers/single_leg_dynamics/dynamic_calculation.cpp.i
-
-.PHONY : home/kun/Webots/model_build/controllers/single_leg_dynamics/dynamic_calculation.i
-
-# target to preprocess a source file
-home/kun/Webots/model_build/controllers/single_leg_dynamics/dynamic_calculation.cpp.i:
-	cd /home/kun/catkin_ws/build && $(MAKE) -f webots_simulation/CMakeFiles/dynamic_calculation.dir/build.make webots_simulation/CMakeFiles/dynamic_calculation.dir/home/kun/Webots/model_build/controllers/single_leg_dynamics/dynamic_calculation.cpp.i
-.PHONY : home/kun/Webots/model_build/controllers/single_leg_dynamics/dynamic_calculation.cpp.i
-
-home/kun/Webots/model_build/controllers/single_leg_dynamics/dynamic_calculation.s: home/kun/Webots/model_build/controllers/single_leg_dynamics/dynamic_calculation.cpp.s
-
-.PHONY : home/kun/Webots/model_build/controllers/single_leg_dynamics/dynamic_calculation.s
-
-# target to generate assembly for a file
-home/kun/Webots/model_build/controllers/single_leg_dynamics/dynamic_calculation.cpp.s:
-	cd /home/kun/catkin_ws/build && $(MAKE) -f webots_simulation/CMakeFiles/dynamic_calculation.dir/build.make webots_simulation/CMakeFiles/dynamic_calculation.dir/home/kun/Webots/model_build/controllers/single_leg_dynamics/dynamic_calculation.cpp.s
-.PHONY : home/kun/Webots/model_build/controllers/single_leg_dynamics/dynamic_calculation.cpp.s
-
 home/kun/Webots/model_build/controllers/single_leg_dynamics/single_leg_dynamics.o: home/kun/Webots/model_build/controllers/single_leg_dynamics/single_leg_dynamics.cpp.o
 
 .PHONY : home/kun/Webots/model_build/controllers/single_leg_dynamics/single_leg_dynamics.o
@@ -257,16 +215,12 @@ help:
 	@echo "... depend"
 	@echo "... list_install_components"
 	@echo "... install"
-	@echo "... edit_cache"
-	@echo "... test"
-	@echo "... single_leg_dynamics"
 	@echo "... rebuild_cache"
-	@echo "... dynamic_calculation"
+	@echo "... edit_cache"
+	@echo "... single_leg_dynamics"
 	@echo "... install/local"
 	@echo "... install/strip"
-	@echo "... home/kun/Webots/model_build/controllers/single_leg_dynamics/dynamic_calculation.o"
-	@echo "... home/kun/Webots/model_build/controllers/single_leg_dynamics/dynamic_calculation.i"
-	@echo "... home/kun/Webots/model_build/controllers/single_leg_dynamics/dynamic_calculation.s"
+	@echo "... test"
 	@echo "... home/kun/Webots/model_build/controllers/single_leg_dynamics/single_leg_dynamics.o"
 	@echo "... home/kun/Webots/model_build/controllers/single_leg_dynamics/single_leg_dynamics.i"
 	@echo "... home/kun/Webots/model_build/controllers/single_leg_dynamics/single_leg_dynamics.s"

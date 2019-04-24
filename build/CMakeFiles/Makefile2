@@ -390,6 +390,7 @@ clean: gtest/gtest/CMakeFiles/gtest_main.dir/clean
 # Directory level rules for directory single_leg_test
 
 # Convenience name for "all" pass in the directory.
+single_leg_test/all: single_leg_test/CMakeFiles/example.dir/all
 single_leg_test/all: single_leg_test/CMakeFiles/dynamics.dir/all
 single_leg_test/all: single_leg_test/CMakeFiles/testa.dir/all
 single_leg_test/all: single_leg_test/CMakeFiles/single_leg_test.dir/all
@@ -398,6 +399,7 @@ single_leg_test/all: single_leg_test/CMakeFiles/model_test.dir/all
 .PHONY : single_leg_test/all
 
 # Convenience name for "clean" pass in the directory.
+single_leg_test/clean: single_leg_test/CMakeFiles/example.dir/clean
 single_leg_test/clean: single_leg_test/CMakeFiles/dynamics.dir/clean
 single_leg_test/clean: single_leg_test/CMakeFiles/testa.dir/clean
 single_leg_test/clean: single_leg_test/CMakeFiles/std_srvs_generate_messages_nodejs.dir/clean
@@ -441,13 +443,50 @@ single_leg_test/preinstall:
 .PHONY : single_leg_test/preinstall
 
 #=============================================================================
+# Target rules for target single_leg_test/CMakeFiles/example.dir
+
+# All Build rule for target.
+single_leg_test/CMakeFiles/example.dir/all: single_leg_test/CMakeFiles/single_leg_test.dir/all
+	$(MAKE) -f single_leg_test/CMakeFiles/example.dir/build.make single_leg_test/CMakeFiles/example.dir/depend
+	$(MAKE) -f single_leg_test/CMakeFiles/example.dir/build.make single_leg_test/CMakeFiles/example.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/kun/catkin_ws/build/CMakeFiles --progress-num=3,4 "Built target example"
+.PHONY : single_leg_test/CMakeFiles/example.dir/all
+
+# Include target in all.
+all: single_leg_test/CMakeFiles/example.dir/all
+
+.PHONY : all
+
+# Build rule for subdir invocation for target.
+single_leg_test/CMakeFiles/example.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/kun/catkin_ws/build/CMakeFiles 4
+	$(MAKE) -f CMakeFiles/Makefile2 single_leg_test/CMakeFiles/example.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/kun/catkin_ws/build/CMakeFiles 0
+.PHONY : single_leg_test/CMakeFiles/example.dir/rule
+
+# Convenience name for target.
+example: single_leg_test/CMakeFiles/example.dir/rule
+
+.PHONY : example
+
+# clean rule for target.
+single_leg_test/CMakeFiles/example.dir/clean:
+	$(MAKE) -f single_leg_test/CMakeFiles/example.dir/build.make single_leg_test/CMakeFiles/example.dir/clean
+.PHONY : single_leg_test/CMakeFiles/example.dir/clean
+
+# clean rule for target.
+clean: single_leg_test/CMakeFiles/example.dir/clean
+
+.PHONY : clean
+
+#=============================================================================
 # Target rules for target single_leg_test/CMakeFiles/dynamics.dir
 
 # All Build rule for target.
 single_leg_test/CMakeFiles/dynamics.dir/all: single_leg_test/CMakeFiles/single_leg_test.dir/all
 	$(MAKE) -f single_leg_test/CMakeFiles/dynamics.dir/build.make single_leg_test/CMakeFiles/dynamics.dir/depend
 	$(MAKE) -f single_leg_test/CMakeFiles/dynamics.dir/build.make single_leg_test/CMakeFiles/dynamics.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/kun/catkin_ws/build/CMakeFiles --progress-num=3,4 "Built target dynamics"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/kun/catkin_ws/build/CMakeFiles --progress-num=1,2 "Built target dynamics"
 .PHONY : single_leg_test/CMakeFiles/dynamics.dir/all
 
 # Include target in all.
@@ -1553,13 +1592,11 @@ clean: single_leg_test/CMakeFiles/turtlesim_generate_messages_eus.dir/clean
 
 # Convenience name for "all" pass in the directory.
 webots_simulation/all: webots_simulation/CMakeFiles/single_leg_dynamics.dir/all
-webots_simulation/all: webots_simulation/CMakeFiles/dynamic_calculation.dir/all
 
 .PHONY : webots_simulation/all
 
 # Convenience name for "clean" pass in the directory.
 webots_simulation/clean: webots_simulation/CMakeFiles/single_leg_dynamics.dir/clean
-webots_simulation/clean: webots_simulation/CMakeFiles/dynamic_calculation.dir/clean
 
 .PHONY : webots_simulation/clean
 
@@ -1602,43 +1639,6 @@ webots_simulation/CMakeFiles/single_leg_dynamics.dir/clean:
 
 # clean rule for target.
 clean: webots_simulation/CMakeFiles/single_leg_dynamics.dir/clean
-
-.PHONY : clean
-
-#=============================================================================
-# Target rules for target webots_simulation/CMakeFiles/dynamic_calculation.dir
-
-# All Build rule for target.
-webots_simulation/CMakeFiles/dynamic_calculation.dir/all: single_leg_test/CMakeFiles/single_leg_test.dir/all
-	$(MAKE) -f webots_simulation/CMakeFiles/dynamic_calculation.dir/build.make webots_simulation/CMakeFiles/dynamic_calculation.dir/depend
-	$(MAKE) -f webots_simulation/CMakeFiles/dynamic_calculation.dir/build.make webots_simulation/CMakeFiles/dynamic_calculation.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/kun/catkin_ws/build/CMakeFiles --progress-num=1,2 "Built target dynamic_calculation"
-.PHONY : webots_simulation/CMakeFiles/dynamic_calculation.dir/all
-
-# Include target in all.
-all: webots_simulation/CMakeFiles/dynamic_calculation.dir/all
-
-.PHONY : all
-
-# Build rule for subdir invocation for target.
-webots_simulation/CMakeFiles/dynamic_calculation.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/kun/catkin_ws/build/CMakeFiles 4
-	$(MAKE) -f CMakeFiles/Makefile2 webots_simulation/CMakeFiles/dynamic_calculation.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/kun/catkin_ws/build/CMakeFiles 0
-.PHONY : webots_simulation/CMakeFiles/dynamic_calculation.dir/rule
-
-# Convenience name for target.
-dynamic_calculation: webots_simulation/CMakeFiles/dynamic_calculation.dir/rule
-
-.PHONY : dynamic_calculation
-
-# clean rule for target.
-webots_simulation/CMakeFiles/dynamic_calculation.dir/clean:
-	$(MAKE) -f webots_simulation/CMakeFiles/dynamic_calculation.dir/build.make webots_simulation/CMakeFiles/dynamic_calculation.dir/clean
-.PHONY : webots_simulation/CMakeFiles/dynamic_calculation.dir/clean
-
-# clean rule for target.
-clean: webots_simulation/CMakeFiles/dynamic_calculation.dir/clean
 
 .PHONY : clean
 

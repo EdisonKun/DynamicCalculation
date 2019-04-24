@@ -750,19 +750,6 @@ single_leg_dynamics/fast:
 	$(MAKE) -f webots_simulation/CMakeFiles/single_leg_dynamics.dir/build.make webots_simulation/CMakeFiles/single_leg_dynamics.dir/build
 .PHONY : single_leg_dynamics/fast
 
-#=============================================================================
-# Target rules for targets named dynamic_calculation
-
-# Build rule for target.
-dynamic_calculation: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 dynamic_calculation
-.PHONY : dynamic_calculation
-
-# fast build rule for target.
-dynamic_calculation/fast:
-	$(MAKE) -f webots_simulation/CMakeFiles/dynamic_calculation.dir/build.make webots_simulation/CMakeFiles/dynamic_calculation.dir/build
-.PHONY : dynamic_calculation/fast
-
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -821,7 +808,6 @@ help:
 	@echo "... geometry_msgs_generate_messages_py"
 	@echo "... turtlesim_generate_messages_eus"
 	@echo "... single_leg_dynamics"
-	@echo "... dynamic_calculation"
 .PHONY : help
 
 

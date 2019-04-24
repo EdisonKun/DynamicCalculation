@@ -25,8 +25,7 @@ MyRobotSolver::MyRobotSolver()
 
 MyRobotSolver::~MyRobotSolver()
 {
-  std::cout<<"MyRobotSolver Destroied"<<std::endl;
-  cout << "R you fucking kidding me, Asshole?" << endl;
+  std::cout<<"MyRobotSolver Destroied"<<std::endl;  
 }
 
 const Model& MyRobotSolver::getModel()
@@ -47,6 +46,11 @@ const MatrixNd& MyRobotSolver::getQDotPlanned()
 const MatrixNd& MyRobotSolver::getQPlanned()
 {
   return QPlanned;
+}
+
+const unsigned int& MyRobotSolver::getlength_of_data()
+{
+  return length_of_data;
 }
 
 void MyRobotSolver::FileStoreIntoTextFile(const char* filestoredlocation, const MatrixNd& Stored_data)
