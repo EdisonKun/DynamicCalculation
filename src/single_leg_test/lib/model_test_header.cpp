@@ -97,7 +97,7 @@ void MyRobotSolver::model_initialization()
     Matrix3d B1toB2Rotation = rotx(-M_PI/2);
     body_b_id = QuadrupedRobotModel.AddBody(body_a_id, SpatialTransform(B1toB2Rotation,Vector3d(0., 0., 0.1)), joint_b, body_b);
 
-    body_c = Body (1.41, Vector3d (0.00949, 0., -0.00166),Matrix3d (0.0040547, 0., 0., 0., 0.0109, 0.000222, 0., 0.000222, 0.0111));
+    body_c = Body (1.41, Vector3d (0.0949, 0., -0.00166),Matrix3d (0.000547, 0., 0.000222, 0., 0.0109, 0., 0.000222, 0., 0.0111));
         joint_c = Joint (
         JointTypeRevolute,
         Vector3d (0., 0., 1.)
@@ -161,6 +161,8 @@ bool MyRobotSolver::IDynamicsCalculation()
         TauofIDynamics.row(i).transpose() = VecTau;
 //        cout << "i is equal to " << i << endl;
     }
+    const char* filestoredlocation = "/home/kun/catkin_ws/src/single_leg_test/DataFloder/TauofInversedynamics.txt";
+    FileStoreIntoTextFile(filestoredlocation, TauofIDynamics);
     cout <<"finish the Inverse Dynamics calculation" << endl;
     return true;
 }
