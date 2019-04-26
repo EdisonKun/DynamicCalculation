@@ -89,6 +89,17 @@ rebuild_cache/fast: rebuild_cache
 
 .PHONY : rebuild_cache/fast
 
+# Special rule for the target test
+test:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running tests..."
+	/usr/bin/ctest --force-new-ctest-process $(ARGS)
+.PHONY : test
+
+# Special rule for the target test
+test/fast: test
+
+.PHONY : test/fast
+
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
@@ -121,17 +132,6 @@ install/strip: preinstall
 install/strip/fast: install/strip
 
 .PHONY : install/strip/fast
-
-# Special rule for the target test
-test:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running tests..."
-	/usr/bin/ctest --force-new-ctest-process $(ARGS)
-.PHONY : test
-
-# Special rule for the target test
-test/fast: test
-
-.PHONY : test/fast
 
 # The main all target
 all: cmake_check_build_system
@@ -180,6 +180,48 @@ single_leg_dynamics/fast:
 	cd /home/kun/catkin_ws/debug && $(MAKE) -f webots_simulation/CMakeFiles/single_leg_dynamics.dir/build.make webots_simulation/CMakeFiles/single_leg_dynamics.dir/build
 .PHONY : single_leg_dynamics/fast
 
+# Convenience name for target.
+webots_simulation/CMakeFiles/FDcontroller.dir/rule:
+	cd /home/kun/catkin_ws/debug && $(MAKE) -f CMakeFiles/Makefile2 webots_simulation/CMakeFiles/FDcontroller.dir/rule
+.PHONY : webots_simulation/CMakeFiles/FDcontroller.dir/rule
+
+# Convenience name for target.
+FDcontroller: webots_simulation/CMakeFiles/FDcontroller.dir/rule
+
+.PHONY : FDcontroller
+
+# fast build rule for target.
+FDcontroller/fast:
+	cd /home/kun/catkin_ws/debug && $(MAKE) -f webots_simulation/CMakeFiles/FDcontroller.dir/build.make webots_simulation/CMakeFiles/FDcontroller.dir/build
+.PHONY : FDcontroller/fast
+
+home/kun/Webots/model_build/controllers/FDcontroller/FDcontroller.o: home/kun/Webots/model_build/controllers/FDcontroller/FDcontroller.cpp.o
+
+.PHONY : home/kun/Webots/model_build/controllers/FDcontroller/FDcontroller.o
+
+# target to build an object file
+home/kun/Webots/model_build/controllers/FDcontroller/FDcontroller.cpp.o:
+	cd /home/kun/catkin_ws/debug && $(MAKE) -f webots_simulation/CMakeFiles/FDcontroller.dir/build.make webots_simulation/CMakeFiles/FDcontroller.dir/home/kun/Webots/model_build/controllers/FDcontroller/FDcontroller.cpp.o
+.PHONY : home/kun/Webots/model_build/controllers/FDcontroller/FDcontroller.cpp.o
+
+home/kun/Webots/model_build/controllers/FDcontroller/FDcontroller.i: home/kun/Webots/model_build/controllers/FDcontroller/FDcontroller.cpp.i
+
+.PHONY : home/kun/Webots/model_build/controllers/FDcontroller/FDcontroller.i
+
+# target to preprocess a source file
+home/kun/Webots/model_build/controllers/FDcontroller/FDcontroller.cpp.i:
+	cd /home/kun/catkin_ws/debug && $(MAKE) -f webots_simulation/CMakeFiles/FDcontroller.dir/build.make webots_simulation/CMakeFiles/FDcontroller.dir/home/kun/Webots/model_build/controllers/FDcontroller/FDcontroller.cpp.i
+.PHONY : home/kun/Webots/model_build/controllers/FDcontroller/FDcontroller.cpp.i
+
+home/kun/Webots/model_build/controllers/FDcontroller/FDcontroller.s: home/kun/Webots/model_build/controllers/FDcontroller/FDcontroller.cpp.s
+
+.PHONY : home/kun/Webots/model_build/controllers/FDcontroller/FDcontroller.s
+
+# target to generate assembly for a file
+home/kun/Webots/model_build/controllers/FDcontroller/FDcontroller.cpp.s:
+	cd /home/kun/catkin_ws/debug && $(MAKE) -f webots_simulation/CMakeFiles/FDcontroller.dir/build.make webots_simulation/CMakeFiles/FDcontroller.dir/home/kun/Webots/model_build/controllers/FDcontroller/FDcontroller.cpp.s
+.PHONY : home/kun/Webots/model_build/controllers/FDcontroller/FDcontroller.cpp.s
+
 home/kun/Webots/model_build/controllers/single_leg_dynamics/single_leg_dynamics.o: home/kun/Webots/model_build/controllers/single_leg_dynamics/single_leg_dynamics.cpp.o
 
 .PHONY : home/kun/Webots/model_build/controllers/single_leg_dynamics/single_leg_dynamics.o
@@ -216,11 +258,15 @@ help:
 	@echo "... list_install_components"
 	@echo "... install"
 	@echo "... rebuild_cache"
-	@echo "... edit_cache"
+	@echo "... test"
 	@echo "... single_leg_dynamics"
+	@echo "... edit_cache"
+	@echo "... FDcontroller"
 	@echo "... install/local"
 	@echo "... install/strip"
-	@echo "... test"
+	@echo "... home/kun/Webots/model_build/controllers/FDcontroller/FDcontroller.o"
+	@echo "... home/kun/Webots/model_build/controllers/FDcontroller/FDcontroller.i"
+	@echo "... home/kun/Webots/model_build/controllers/FDcontroller/FDcontroller.s"
 	@echo "... home/kun/Webots/model_build/controllers/single_leg_dynamics/single_leg_dynamics.o"
 	@echo "... home/kun/Webots/model_build/controllers/single_leg_dynamics/single_leg_dynamics.i"
 	@echo "... home/kun/Webots/model_build/controllers/single_leg_dynamics/single_leg_dynamics.s"

@@ -37,6 +37,11 @@ const MatrixNd& MyRobotSolver::getTau()
   return TauofIDynamics;
 }
 
+const double& MyRobotSolver::getTime_derta()
+{
+  return Time_derta;
+}
+
 const MatrixNd& MyRobotSolver::getQDotPlanned()
 {
   return QDotPlanned;
@@ -50,6 +55,26 @@ const MatrixNd& MyRobotSolver::getQPlanned()
 const unsigned int& MyRobotSolver::getlength_of_data()
 {
   return length_of_data;
+}
+
+void MyRobotSolver::GetPlannedTorque()
+{
+  ifstream OpenPlannedtorque;
+
+  OpenPlannedtorque.open("/home/kun/catkin_ws/src/single_leg_test/DataFloder/TauofInversedynamics.txt");
+  if (!OpenPlannedtorque.is_open())
+  {
+      cout << "could not open the TauofInversedynamixcs file" << endl;
+      cout << "Program terminating" << endl;
+      exit(EXIT_FAILURE);
+  }
+  unsigned int i = 0;
+  for (int i = 0; i < length_of_data; ++i)
+  {
+      OpenPlannedtorque >> TauofIDynamics(i,0) >> TauofIDynamics(i,1) >> TauofIDynamics(i,2);
+  }
+  cout << "finish the GetplannedTorque"<<endl;
+  OpenPlannedtorque.close();
 }
 
 void MyRobotSolver::FileStoreIntoTextFile(const char* filestoredlocation, const MatrixNd& Stored_data)

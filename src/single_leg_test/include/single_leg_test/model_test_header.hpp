@@ -18,11 +18,13 @@ public:
     MyRobotSolver();
     ~MyRobotSolver();
     void GetLengthofPlannedData();//get the length of the planned data;
+    void GetPlannedTorque();
     void model_initialization();//initialization of a model;
     bool IDynamicsCalculation();//Calculate the torque by inverse dynamics.
     const Model& getModel();
     const MatrixNd& getTau();
     const MatrixNd& getQPlanned();
+    const double& getTime_derta();
 //    const MatrixNd& getQDotPlanned();
     const MatrixNd& getQDotPlanned();
     const unsigned int& getlength_of_data();

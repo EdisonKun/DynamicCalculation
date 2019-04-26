@@ -750,6 +750,19 @@ single_leg_dynamics/fast:
 	$(MAKE) -f webots_simulation/CMakeFiles/single_leg_dynamics.dir/build.make webots_simulation/CMakeFiles/single_leg_dynamics.dir/build
 .PHONY : single_leg_dynamics/fast
 
+#=============================================================================
+# Target rules for targets named FDcontroller
+
+# Build rule for target.
+FDcontroller: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 FDcontroller
+.PHONY : FDcontroller
+
+# fast build rule for target.
+FDcontroller/fast:
+	$(MAKE) -f webots_simulation/CMakeFiles/FDcontroller.dir/build.make webots_simulation/CMakeFiles/FDcontroller.dir/build
+.PHONY : FDcontroller/fast
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -808,6 +821,7 @@ help:
 	@echo "... geometry_msgs_generate_messages_py"
 	@echo "... turtlesim_generate_messages_eus"
 	@echo "... single_leg_dynamics"
+	@echo "... FDcontroller"
 .PHONY : help
 
 
