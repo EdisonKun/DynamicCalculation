@@ -146,14 +146,12 @@ void MyRobotSolver::GetLengthofPlannedData()
         exit(EXIT_FAILURE);
     }
     unsigned int i = 0;
-//    while(!OpenPlannedParameters.eof())
     for (int i = 0; i < length_of_data; ++i)
     {
 
         OpenPlannedParameters >> QPlanned(i,0) >> QPlanned(i,1) >> QPlanned(i,2)
                               >> QDotPlanned(i,0) >> QDotPlanned(i,1) >> QDotPlanned(i,2)
                               >> QDDotPlanned(i,0) >> QDDotPlanned(i,1) >>QDDotPlanned(i,2);
-//        cout << i << ":" << Q(i,0) << "\t" << Q(i,1) << "\t" << Q(i,2) << endl;
      }
     cout << "finish the GetLengthofPlannedData"<<endl;
     OpenPlannedParameters.close();
@@ -165,26 +163,18 @@ bool MyRobotSolver::IDynamicsCalculation()
   VectorNd VecQDot = VectorNd::Zero (QuadrupedRobotModel.dof_count);
   VectorNd VecTau = VectorNd::Zero (QuadrupedRobotModel.dof_count);
   VectorNd VecQDDot = VectorNd::Zero (QuadrupedRobotModel.dof_count);
-//  VectorNd VecQ,VecQDot, VecQDDot;
-//  VectorNd VecTau;
-//  VecQ.resize(3);
-//  VecQDot.resize(3);
-//  VecQDDot.resize(3);
-//  VecTau = Vector3dZero;//it's also right!
-//  cout << "what?" << endl;
-//  cout << VecQ.transpose() << endl;
-//  InverseDynamics(QuadrupedRobotModel,VecQ,VecQDot,VecQDDot,VecTau);
+
     for (unsigned int i = 0; i < length_of_data; i++)
     {
         VecQ = QPlanned.row(i).transpose();
-//        cout << VecQ.transpose() << endl;
+
         VecQDot = QDotPlanned.row(i).transpose();
         VecQDDot = QDDotPlanned.row(i).transpose();
-//        cout << VecQDDot.transpose() << endl;
+
         InverseDynamics(QuadrupedRobotModel,VecQ,VecQDot,VecQDDot,VecTau);
-//        cout << "VecTau is equal to:" << VecTau.transpose() << endl;
+
         TauofIDynamics.row(i).transpose() = VecTau;
-//        cout << "i is equal to " << i << endl;
+
     }
     const char* filestoredlocation = "/home/kun/catkin_ws/src/single_leg_test/DataFloder/TauofInversedynamics.txt";
     FileStoreIntoTextFile(filestoredlocation, TauofIDynamics);
@@ -197,7 +187,6 @@ void MyRobotSolver::FDynamicsCalculation()
   QAcutal.row(0) = QPlanned.row(0);
   QDotAcutal.row(0) = QDotPlanned.row(0);
   QDDotAcutal.row(0) = QDDotPlanned.row(0);
-//  cout << QAcutal.row(0) << endl << QDotAcutal.row(0) << endl << QDDotAcutal.row(0) << endl;
 
   double kp = 2;
   double kd = 2;
@@ -210,7 +199,7 @@ void MyRobotSolver::FDynamicsCalculation()
     VecTauAct = TauofIDynamics.row(i).transpose() + VecTauerror;
 
     // calculate the acceleration
-   // ForwardDynamics(QuadrupedRobotModel,VecQAct,VecQDotAct,VecTauAct,VecQDDotAct);
+    ForwardDynamics(QuadrupedRobotModel,VecQAct,VecQDotAct,VecTauAct,VecQDDotAct);
 
     // stored the acc
     QDDotAcutal.row(i) = VecQDDotAct.transpose();
@@ -242,4 +231,16 @@ void MyRobotSolver::FDynamicsCalculation()
 
 }
 
+const VectorNd& MyRobotSolver::update(VectorNd& Q, VectorNd&QDot, VectorNd&QDDot, VectorNd&tau)
+{
+    InverseDynamics(QuadrupedRobotModel,Q,QDot,QDDot,tau);//ID to get the feed forward control tau.
+    double kp = 2;
+    double kd = 2;
 
+    VectorNd position,velocity;//data from sensors
+    position.resize(3);
+    velocity.resize(3);
+
+    tau = tau + kp * (Q - position) + kd * (QDot - velocity);// the torque with PD control.
+    return tau;
+}

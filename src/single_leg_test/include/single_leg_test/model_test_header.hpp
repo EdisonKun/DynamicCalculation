@@ -30,7 +30,7 @@ public:
     const unsigned int& getlength_of_data();
     void FDynamicsCalculation();//Calculate the forward dynamic with PD controller
     void FileStoreIntoTextFile(const char *filestoredlocation, const MatrixNd & Stored_data);
-
+    const VectorNd& update(VectorNd& Q, VectorNd&QDot, VectorNd&QDDot, VectorNd&tau);
 protected:
     MatrixNd QPlanned, QDotPlanned, QDDotPlanned;
     MatrixNd TauofIDynamics;
