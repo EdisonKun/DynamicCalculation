@@ -21,7 +21,7 @@ public:
     void GetPlannedTorque();
     void model_initialization();//initialization of a model;
     bool IDynamicsCalculation();//Calculate the torque by inverse dynamics.
-    const Model& getModel();
+    Model& getModel();
     const MatrixNd& getTau();
     const MatrixNd& getQPlanned();
     const double& getTime_derta();

@@ -27,7 +27,7 @@ MyRobotSolver::~MyRobotSolver()
   std::cout<<"MyRobotSolver Destroied"<<std::endl;  
 }
 
-const Model& MyRobotSolver::getModel()
+Model& MyRobotSolver::getModel()
 {
   return QuadrupedRobotModel;
 }
