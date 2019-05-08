@@ -141,6 +141,7 @@ include_directories(
  add_executable(single_leg_dynamics /home/kun/Webots/model_build/controllers/single_leg_dynamics/single_leg_dynamics.cpp)
  add_executable(FDcontroller /home/kun/Webots/model_build/controllers/FDcontroller/FDcontroller.cpp)
  add_executable(FD_Real_Sensor_Data /home/kun/Webots/model_build/controllers/FD_Real_Sensor_Data/FD_Real_Sensor_Data.cpp)
+ add_executable(FD_rt_controller_lib /home/kun/Webots/model_build/controllers/FD_rt_controller_lib/FD_rt_controller_lib.cpp)
 # add_executable(dynamic_calculation /home/kun/Webots/model_build/controllers/single_leg_dynamics/dynamic_calculation.cpp)
 
 # add_executable(Request_1 src/Request_1.cpp)
@@ -179,6 +180,13 @@ target_link_libraries(FDcontroller
 )
 
 target_link_libraries(FD_Real_Sensor_Data
+  ${catkin_LIBRARIES}
+  single_leg_test
+  ${RBDL_LIBRARY}
+  /usr/local/webots/lib/libCppController.so
+)
+
+target_link_libraries(FD_rt_controller_lib
   ${catkin_LIBRARIES}
   single_leg_test
   ${RBDL_LIBRARY}

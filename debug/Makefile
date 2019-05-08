@@ -738,19 +738,6 @@ turtlesim_generate_messages_eus/fast:
 .PHONY : turtlesim_generate_messages_eus/fast
 
 #=============================================================================
-# Target rules for targets named single_leg_dynamics
-
-# Build rule for target.
-single_leg_dynamics: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 single_leg_dynamics
-.PHONY : single_leg_dynamics
-
-# fast build rule for target.
-single_leg_dynamics/fast:
-	$(MAKE) -f webots_simulation/CMakeFiles/single_leg_dynamics.dir/build.make webots_simulation/CMakeFiles/single_leg_dynamics.dir/build
-.PHONY : single_leg_dynamics/fast
-
-#=============================================================================
 # Target rules for targets named FDcontroller
 
 # Build rule for target.
@@ -764,6 +751,19 @@ FDcontroller/fast:
 .PHONY : FDcontroller/fast
 
 #=============================================================================
+# Target rules for targets named FD_rt_controller_lib
+
+# Build rule for target.
+FD_rt_controller_lib: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 FD_rt_controller_lib
+.PHONY : FD_rt_controller_lib
+
+# fast build rule for target.
+FD_rt_controller_lib/fast:
+	$(MAKE) -f webots_simulation/CMakeFiles/FD_rt_controller_lib.dir/build.make webots_simulation/CMakeFiles/FD_rt_controller_lib.dir/build
+.PHONY : FD_rt_controller_lib/fast
+
+#=============================================================================
 # Target rules for targets named FD_Real_Sensor_Data
 
 # Build rule for target.
@@ -775,6 +775,19 @@ FD_Real_Sensor_Data: cmake_check_build_system
 FD_Real_Sensor_Data/fast:
 	$(MAKE) -f webots_simulation/CMakeFiles/FD_Real_Sensor_Data.dir/build.make webots_simulation/CMakeFiles/FD_Real_Sensor_Data.dir/build
 .PHONY : FD_Real_Sensor_Data/fast
+
+#=============================================================================
+# Target rules for targets named single_leg_dynamics
+
+# Build rule for target.
+single_leg_dynamics: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 single_leg_dynamics
+.PHONY : single_leg_dynamics
+
+# fast build rule for target.
+single_leg_dynamics/fast:
+	$(MAKE) -f webots_simulation/CMakeFiles/single_leg_dynamics.dir/build.make webots_simulation/CMakeFiles/single_leg_dynamics.dir/build
+.PHONY : single_leg_dynamics/fast
 
 # Help Target
 help:
@@ -833,9 +846,10 @@ help:
 	@echo "... std_srvs_generate_messages_eus"
 	@echo "... geometry_msgs_generate_messages_py"
 	@echo "... turtlesim_generate_messages_eus"
-	@echo "... single_leg_dynamics"
 	@echo "... FDcontroller"
+	@echo "... FD_rt_controller_lib"
 	@echo "... FD_Real_Sensor_Data"
+	@echo "... single_leg_dynamics"
 .PHONY : help
 
 

@@ -2,9 +2,8 @@
 //#include "assert.h"
 
 MyRobotSolver::MyRobotSolver()
-  : length_of_data(10001),Time_derta(0.001)
+  : length_of_data(10001),Time_derta(0.001),num_of_joints(3),calculation_iterstions(0)
 {
-
   QPlanned.resize(length_of_data,3);
   QDotPlanned.resize(length_of_data,3);
   QDDotPlanned.resize(length_of_data,3);
@@ -12,14 +11,15 @@ MyRobotSolver::MyRobotSolver()
   QDotAcutal.resize(length_of_data,3);
   QDDotAcutal.resize(length_of_data,3);
   TauofIDynamics.resize(length_of_data,3);
+  Tauacutal.resize(length_of_data,3);
 
-  VecTauerror.resize(3);
-  VecQerror.resize(3);
-  VecQDoterror.resize(3);
-  VecQDDotAct.resize(3);
   VecQAct.resize(3);
   VecQDotAct.resize(3);
   VecQDDotAct.resize(3);
+  VecTauAct.resize(3);
+  VecTauerror.resize(3);
+  VecQerror.resize(3);
+  VecQDoterror.resize(3);
 }
 
 MyRobotSolver::~MyRobotSolver()
@@ -35,6 +35,11 @@ Model& MyRobotSolver::getModel()
 const MatrixNd& MyRobotSolver::getTau()
 {
   return TauofIDynamics;
+}
+
+const unsigned int& MyRobotSolver::getnum_of_joints()
+{
+  return num_of_joints;
 }
 
 const double& MyRobotSolver::getTime_derta()
@@ -55,6 +60,53 @@ const MatrixNd& MyRobotSolver::getQPlanned()
 const unsigned int& MyRobotSolver::getlength_of_data()
 {
   return length_of_data;
+}
+
+const unsigned int& MyRobotSolver::getcalculation_iterations()
+{
+  return calculation_iterstions;
+}
+
+const VectorNd& MyRobotSolver::getVecTauAct()
+{
+  return VecTauAct;
+}
+
+void MyRobotSolver::setvecQAct(unsigned int i, const double value)
+{
+  VecQAct[i] = value;
+}
+
+void MyRobotSolver::setQAcutal(const VectorNd Rowszero)
+{
+  QAcutal.row(0) = Rowszero.transpose();
+}
+
+void MyRobotSolver::setQDotAcutal(const VectorNd Rowszero){
+  QDotAcutal.row(0) = Rowszero.transpose();
+}
+
+const VectorNd& MyRobotSolver::getVecQAct()
+{
+  return VecQAct;
+}
+
+const MatrixNd& MyRobotSolver::getQAcutal()
+{
+  return QAcutal;
+}
+const MatrixNd& MyRobotSolver::getQDotAcutal()
+{
+  return QDotAcutal;
+}
+const MatrixNd& MyRobotSolver::getQDDotAcutal()
+{
+  return QDDotAcutal;
+}
+
+const MatrixNd& MyRobotSolver::getTauAcutal()
+{
+  return Tauacutal;
 }
 
 void MyRobotSolver::GetPlannedTorque()
@@ -231,16 +283,28 @@ void MyRobotSolver::FDynamicsCalculation()
 
 }
 
-const VectorNd& MyRobotSolver::update(VectorNd& Q, VectorNd&QDot, VectorNd&QDDot, VectorNd&tau)
-{
-    InverseDynamics(QuadrupedRobotModel,Q,QDot,QDDot,tau);//ID to get the feed forward control tau.
-    double kp = 2;
-    double kd = 2;
+bool MyRobotSolver::update()
+{  
+    calculation_iterstions = calculation_iterstions + 1;
 
-    VectorNd position,velocity;//data from sensors
-    position.resize(3);
-    velocity.resize(3);
+    QAcutal.row(calculation_iterstions) = VecQAct.transpose();
+    for (int num = 0; num < num_of_joints; ++num) {
+      QDotAcutal(calculation_iterstions,num) = (QAcutal(calculation_iterstions,num) - QAcutal(calculation_iterstions - 1, num))/Time_derta;
+      QDDotAcutal(calculation_iterstions,num) = (QDotAcutal(calculation_iterstions,num) - QDotAcutal(calculation_iterstions - 1, num))/Time_derta;
+     }
 
-    tau = tau + kp * (Q - position) + kd * (QDot - velocity);// the torque with PD control.
-    return tau;
+    VeDotAccQt = QDotAcutal.row(calculation_iterstions).transpose();
+    VecQDDotAct = QDDotAcutal.row(calculation_iterstions).transpose();
+
+    InverseDynamics(QuadrupedRobotModel,VecQAct,VecQDotAct,VecQDDotAct,VecTauAct);
+
+    for (int num = 0; num < num_of_joints; ++num) {
+      VecTauAct[num] = 2 * (QPlanned(calculation_iterstions,num) - QAcutal(calculation_iterstions,num))
+                     + 30* (QDotPlanned(calculation_iterstions,num)-QDotAcutal(calculation_iterstions,num))
+                     + VecTauAct[num];
+    }
+
+    Tauacutal.row(calculation_iterstions) = VecTauAct.transpose();
+
+    return true;
 }

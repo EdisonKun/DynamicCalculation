@@ -25,17 +25,30 @@ public:
     const MatrixNd& getTau();
     const MatrixNd& getQPlanned();
     const double& getTime_derta();
-//    const MatrixNd& getQDotPlanned();
     const MatrixNd& getQDotPlanned();
     const unsigned int& getlength_of_data();
+    const unsigned int& getnum_of_joints();
+    const unsigned int& getcalculation_iterations();
+    void setvecQAct(unsigned int i, const double value);
+    void setQAcutal(const VectorNd Rowszero);
+    void setQDotAcutal(const VectorNd Rowszero);
+    const VectorNd& getVecQAct();
+    const VectorNd& getVecTauAct();
+    const MatrixNd& getQAcutal();
+    const MatrixNd& getQDotAcutal();
+    const MatrixNd& getQDDotAcutal();
+    const MatrixNd& getTauAcutal();
+
     void FDynamicsCalculation();//Calculate the forward dynamic with PD controller
     void FileStoreIntoTextFile(const char *filestoredlocation, const MatrixNd & Stored_data);
-    const VectorNd& update(VectorNd& Q, VectorNd&QDot, VectorNd&QDDot, VectorNd&tau);
+    bool update();
 protected:
     MatrixNd QPlanned, QDotPlanned, QDDotPlanned;
     MatrixNd TauofIDynamics;
     unsigned int length_of_data;
-    MatrixNd QAcutal, QDotAcutal, QDDotAcutal;
+    unsigned int calculation_iterstions;
+    unsigned int num_of_joints;
+    MatrixNd QAcutal, QDotAcutal, QDDotAcutal,Tauacutal;
     Model QuadrupedRobotModel;
     double Time_derta;
     VectorNd VecQAct, VecQDotAct, VecQDDotAct, VecTauAct;
