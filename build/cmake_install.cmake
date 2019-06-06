@@ -117,7 +117,10 @@ endif()
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
   include("/home/kun/catkin_ws/build/gtest/cmake_install.cmake")
+  include("/home/kun/catkin_ws/build/custom_srv_service/cmake_install.cmake")
   include("/home/kun/catkin_ws/build/single_leg_test/cmake_install.cmake")
+  include("/home/kun/catkin_ws/build/test_msg/cmake_install.cmake")
+  include("/home/kun/catkin_ws/build/webots_ros/cmake_install.cmake")
   include("/home/kun/catkin_ws/build/webots_simulation/cmake_install.cmake")
 
 endif()

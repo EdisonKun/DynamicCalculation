@@ -293,7 +293,7 @@ bool MyRobotSolver::update()
       QDDotAcutal(calculation_iterstions,num) = (QDotAcutal(calculation_iterstions,num) - QDotAcutal(calculation_iterstions - 1, num))/Time_derta;
      }
 
-    VeDotAccQt = QDotAcutal.row(calculation_iterstions).transpose();
+    VecQDotAct = QDotAcutal.row(calculation_iterstions).transpose();
     VecQDDotAct = QDDotAcutal.row(calculation_iterstions).transpose();
 
     InverseDynamics(QuadrupedRobotModel,VecQAct,VecQDotAct,VecQDDotAct,VecTauAct);

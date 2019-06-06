@@ -1,0 +1,2 @@
+set(test_msg_kp_MESSAGE_FILES "msg/Test.msg")
+set(test_msg_kp_SERVICE_FILES "")
